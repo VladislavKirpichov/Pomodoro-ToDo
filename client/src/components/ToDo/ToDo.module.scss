@@ -1,0 +1,15 @@
+@use '../../styles/variables.scss' as v;
+
+.todo {
+    margin-top: 64px;
+}
+
+.task {
+    background-color: v.$light-base-color;
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    h4 {
+        margin-bottom: 0;
+    }
+}

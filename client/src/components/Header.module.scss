@@ -1,0 +1,14 @@
+@use '../styles/variables.scss' as v;
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    background-color: v.$base-color;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}

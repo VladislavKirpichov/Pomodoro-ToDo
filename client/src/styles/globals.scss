@@ -1,0 +1,23 @@
+// @import url(./variables.scss);
+@use 'variables' as V;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+body {
+    background-color: V.$base-color;
+    color: V.$primary-dark-color;
+    font-family: 'Rubik', sans-serif;
+    padding-top: 10vh;
+    @media (max-width: 900px) {
+        padding-left: 5vw;
+        padding-right: 5vw;
+    }
+    @media (max-width: 2000px) {
+        padding-left: 20vw;
+        padding-right: 20vw;
+    }
+    @media (min-width: 2000px) {
+        padding-left: 35vw;
+        padding-right: 35vw;
+    }
+}
+
