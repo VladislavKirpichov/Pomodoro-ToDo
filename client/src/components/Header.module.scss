@@ -5,10 +5,13 @@
     left: 0;
     top: 0;
     width: 100vw;
-    background-color: v.$base-color;
+    background-color: rgba(241, 245, 249, 0.5);
     padding-top: 20px;
     padding-bottom: 20px;
     font-weight: bold;
     font-size: 14px;
     text-align: center;
+    border-bottom: 1px solid #dee2e8;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
