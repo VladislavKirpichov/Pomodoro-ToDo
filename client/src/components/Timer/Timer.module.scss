@@ -58,6 +58,30 @@
     font-weight: bold;
 }
 
+.timer_button_active {
+    padding: 16px 32px;
+    font-size: 1.25rem;
+    border-radius: 16px;
+    font-weight: bold;
+    color: #1bb04c;
+    background-color: #e0f5e7;
+    border: none;
+    border: 2px solid #1bb04c;
+    border-bottom: 5px solid #1bb04c;
+}
+
+.timer_button_inactive {
+    padding: 16px 32px;
+    font-size: 1.25rem;
+    border-radius: 16px;
+    font-weight: bold;
+    color: #DC2626;
+    background-color: #FEE2E2;
+    border: none;
+    border: 2px solid #DC2626;
+    border-bottom: 5px solid #DC2626;
+}
+
 .status {
     display: grid;
     gap: 16px;
