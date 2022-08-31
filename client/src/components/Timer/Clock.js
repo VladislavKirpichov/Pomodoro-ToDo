@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
+import useSound from 'use-sound'
+import sound from '../../static/Clock-sound-effect.mp3'
 
 import classes from './Timer.module.scss';
 
@@ -14,6 +16,10 @@ const Clock = () => {
         useSelector((state) => state.timer.minutes) * 60;
     const [time, setTime] = useState(timeFromStateInSeconds);
 
+    const status = useSelector((state) => state.timer.status)
+
+    const [playSOund] = useSound(sound)
+
     // If state updated time
     useEffect(() => {
         setTime(timeFromStateInSeconds);
@@ -24,22 +30,17 @@ const Clock = () => {
         setIsRunning(isRunningFromState);
     }, [isRunningFromState]);
 
-    const handleIsRunning = (isRunning) => {
-        setIsRunning(isRunning);
-
-        if (isRunning) {
+    const switchStatus = () => {
+        playSOund();
+        if (status === 'POMODOR') {
             dispatch({
-                type: 'START'
+                type: 'SET_STATUS__BREAK',
             })
         } else {
             dispatch({
-                type: 'STOP'
+                type: 'SET_STATUS__POMODORO',
             })
-        }
-    };
-
-    const stopTimerWhenTimeIsZero = () => {
-        
+        }        
     }
 
     useEffect(() => {
@@ -49,7 +50,7 @@ const Clock = () => {
             timerId = setInterval(() => {
                 setTime(time => {
                     if (time - 1 < 0) {
-                        handleIsRunning(false);
+                        switchStatus();
                         return 0;
                     }
 

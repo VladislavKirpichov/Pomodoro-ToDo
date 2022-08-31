@@ -22,6 +22,10 @@ module.exports = {
                 },
                 exclude: /node_modules/,
             },
+            {
+                test: /\.mp3$/,
+                loader: 'file-loader',
+            }
         ],
     },
     // Директория для бандла

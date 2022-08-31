@@ -6,14 +6,13 @@ import classes from './Timer.module.scss';
 
 const StateButtons = () => {
     const dispatch = useDispatch();
-    const [status, setStatus] = useState(
-        useSelector((state) => state.timer.status)
-    );
+    const status = useSelector((state) => state.timer.status)
+    // const [status, setStatus] = useState(
+    //     useSelector((state) => state.timer.status)
+    // );
 
     const handlePomodoroClick = (e) => {
         e.preventDefault();
-
-        setStatus('POMODORO')
 
         dispatch({
             type: 'SET_STATUS__POMODORO',
@@ -22,8 +21,6 @@ const StateButtons = () => {
 
     const handleBreakClick = (e) => {
         e.preventDefault();
-
-        setStatus('BREAK')
 
         dispatch({
             type: 'SET_STATUS__BREAK',
