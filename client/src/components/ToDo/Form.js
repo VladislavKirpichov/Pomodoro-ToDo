@@ -1,51 +1,64 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Button = ({ tasks, setTasks }) => {
+import classes from './ToDo.module.scss'
+
+const Form = ({ tasks, setTasks, saveTasksToBrowser }) => {
     const [task, setTask] = useState({
         header: null,
-        content: null,
+        description: null,
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
         e.target.reset();
 
-        task.id = tasks.length + 1;
+        task.id = uuidv4();
 
-        setTasks([...tasks, task]);
+        if (!tasks) {
+            setTasks([task])
+        } else {
+            setTasks([...tasks, task]);
+        }
+
         setTask({
             header: null,
-            content: null,
+            description: null,
         });
+
+        saveTasksToBrowser([...tasks, task]);
     };
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <label>Task header</label>
+            <form className={classes.form} onSubmit={handleSubmit}>
+                <label>Task header
                 <input
                     onChange={(e) =>
                         setTask((state) => ({
                             header: e.target.value,
-                            content: state.content,
+                            description: state.content,
                         }))
                     }
+                    required
                     placeholder="Hello world!"
                 />
-                <label>Task content</label>
+                </label>
+                <label>Task description
                 <input
                     onChange={(e) =>
                         setTask((state) => ({
                             header: state.header,
-                            content: e.target.value,
+                            description: e.target.value,
                         }))
                     }
                     placeholder="Hello world!"
                 />
+                </label>
                 <button type="submit">Add new task</button>
             </form>
         </>
     );
 };
 
-export default Button;
+export default Form;

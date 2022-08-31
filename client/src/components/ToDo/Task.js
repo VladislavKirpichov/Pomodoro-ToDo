@@ -2,11 +2,14 @@ import React from 'react'
 
 import classes from './ToDo.module.scss'
 
-const Task = ({task}) => {
+const Task = ({task, deleteTask}) => {
   return (
     <div className={classes.task}>
-      <h4>{task.header}</h4>
-      <p>{task.content}</p>
+      <button className={classes.buttonDone} onClick={() => deleteTask(task.id)}>✓</button>
+      <div className={classes.taskContent}>
+        <h4>{task.header}</h4>
+        <p>{task.description}</p>
+      </div>
     </div>
   )
 }

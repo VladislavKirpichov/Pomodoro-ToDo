@@ -35,5 +35,11 @@ module.exports = {
             template: './public/index.html',
         }),
     ],
+    optimization: {
+        minimize: true,
+        moduleIds: 'deterministic',
+        innerGraph: true,
+        concatenateModules: true,
+    },
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development', // Или development
 };

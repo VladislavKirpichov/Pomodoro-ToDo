@@ -1,32 +1,46 @@
-import React, { useState } from 'react'
-import Button from './Button';
-import Task from './Task'
+import { isNull } from 'lodash';
+import React, { useState } from 'react';
+import Form from './Form';
+import Task from './Task';
 
-import classes from './ToDo.module.scss'
-
-let data = [
-    {
-        id: 1,
-        header: 'Hello world',
-        content: 'Some content in task...'
-    },
-    {
-        id: 2,
-        header: 'Hello world',
-        content: 'Some content in task...'
-    }
-]
+import classes from './ToDo.module.scss';
 
 const ToDo = () => {
-    const [tasks, setTasks] = useState(data);
+    // const tryGetDataFromDocument = () => {
+    //     data = window.localStorage.getItem('todos')
+    // }
 
-  return (
-    <div className={classes.todo}>
-        <h1>ToDo</h1>
-        {tasks.map((task) => <Task key={task.id} task={task} />)}
-        <Button tasks={tasks} setTasks={setTasks}/>
-    </div>
-  )
-}
+    let data = window.localStorage?.getItem('todos');
+    console.log(data);
+    const [tasks, setTasks] = useState(isNull(data) ? [] : JSON.parse(data));
+    console.log(tasks)
 
-export default ToDo
+    // window.localStorage.removeItem('todos');
+
+    const deleteTask = (deletedTaskId) => {
+        const newTasks = tasks.filter((task) => task.id !== deletedTaskId);
+        setTasks(newTasks);
+        window.localStorage.setItem('todos', JSON.stringify(newTasks));
+    };
+
+    const saveTasksToBrowser = (tasks) => {
+        console.log('Hello')
+        window.localStorage.setItem('todos', JSON.stringify(tasks));
+    };
+
+    return (
+        <div className={classes.todo}>
+            <h1>ToDo</h1>
+            {tasks?.map((task) => (
+                <Task
+                    key={task.id}
+                    deleteTask={deleteTask}
+                    task={task}
+                />
+            ))}
+            <Form tasks={tasks} setTasks={setTasks} saveTasksToBrowser={saveTasksToBrowser} />
+        </div>
+    );
+};
+
+export default ToDo;

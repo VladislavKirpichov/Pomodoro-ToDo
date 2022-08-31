@@ -1,7 +1,7 @@
 const defaultState = {
     minutes: 25,
     pomodoroMinutes: 25,
-    breakMinutes: 5,
+    breakMinutes: 0.1,
     isRunning: false,
     status: 'POMODORO',
 }

@@ -8,6 +8,7 @@ import AuthorLink from '../components/AuthorLink';
 const Home = () => {
     return (
         <>
+            <h1></h1>
             <Timer />
             <ToDo />
             <Description />

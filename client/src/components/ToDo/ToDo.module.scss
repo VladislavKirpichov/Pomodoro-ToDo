@@ -6,10 +6,65 @@
 
 .task {
     background-color: v.$light-base-color;
-    padding: 8px 16px;
+    padding: 8px 24px;
     margin-bottom: 16px;
     border-radius: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.taskContent {
+    margin-left: 24px;
     h4 {
         margin-bottom: 0;
+    }
+}
+
+.buttonDone {
+    font-size: 24px;
+    background: none;
+    border: 2px solid v.$grey-color;
+    border-radius: 100%;
+    color: transparent;
+}
+
+.buttonDone:hover {
+    color: v.$primary-dark-color;
+    border-color: v.$primary-dark-color;
+}
+
+.form {
+    padding: 24px;
+    background-color: v.$light-base-color;
+    display: grid;
+    @media (max-width: 900px) {
+        grid-template-rows: auto auto;
+    }
+    @media (min-width: 900px) {
+        grid-template-columns: auto auto;
+    }
+    gap: 16px;
+    border-radius: 16px;
+    label {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        input {
+            padding: 8px;
+            border: 1px solid v.$base-color;
+            border-radius: 4px;
+        }
+    }
+    button {
+        margin-top: 16px;
+        background-color: v.$light-base-color;
+        color: v.$primary-dark-color;
+        font-weight: bold;
+        border: none;
+        border-radius: 16px;
+        text-align: left;
+        max-width: 50%;
     }
 }
